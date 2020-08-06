@@ -1,0 +1,166 @@
+@import "~antd/dist/antd.css";
+
+*,
+html,
+body {
+  padding: 0;
+  margin: 0;
+  box-sizing: border-box;
+  font-family: "Roboto Slab", serif;
+  font-weight: 350;
+  position: relative;
+}
+/* Banner */
+.hero-image {
+  height: 15rem;
+  background-image: linear-gradient(
+      rgba(83, 83, 83, 0.2),
+      rgba(83, 83, 83, 0.2)
+    ),
+    url("../asset/bookstoreBanner.jpg");
+  background-position: center;
+  background-repeat: no-repeat;
+  background-size: 100% 100%;
+  position: relative;
+  border-bottom: 2px solid #00bcd4;
+}
+/* Navbar */
+.navbar {
+  border-bottom: 2px solid #00bcd4;
+}
+.navbar nav {
+  display: flex;
+  justify-content: space-around;
+  margin: 0.8rem 0.5rem;
+  align-items: center;
+}
+
+.nav-brand span {
+  color: #00bcd4;
+  font-size: 20px;
+  font-weight: 600;
+}
+
+.search {
+  width: 30%;
+  margin-left: 12rem;
+}
+
+.ant-input-affix-wrapper:hover {
+  color: #00bcd4;
+  border-color: #00bcd4;
+}
+
+.ant-input-affix-wrapper:focus {
+  color: #00bcd4;
+  border-color: #00bcd4;
+}
+
+.search span {
+  padding: 3px 3px;
+}
+
+.nav-right .nav-list {
+  display: flex;
+  justify-content: space-evenly;
+  width: 300px;
+  list-style: none;
+  align-items: center;
+  margin-bottom: 5px;
+  margin-left: 3rem;
+}
+.nav-items a {
+  color: #00bcd4;
+  font-size: 15px;
+  font-weight: 400;
+}
+
+.nav-items a:hover {
+  font-size: 16px;
+  font-weight: 600;
+}
+
+/* Menu */
+/* .ant-menu {
+  position: absolute;
+} */
+.ant-menu-horizontal {
+  align-content: center;
+  margin: 0 25rem;
+}
+.ant-menu-item:hover {
+  color: #00bcd4 !important;
+  border-bottom: 2px solid #00bcd4 !important;
+}
+.ant-menu-item-selected {
+  color: #00bcd4 !important;
+  border-bottom: 2px solid #00bcd4 !important;
+}
+.ant-menu-item:focus {
+  color: #00bcd4 !important;
+  border-bottom: 2px solid #00bcd4 !important;
+}
+
+.ant-menu-submenu-title:hover {
+  color: #00bcd4 !important;
+}
+.ant-menu-submenu-open:hover {
+  border-bottom: 2px solid #00bcd4 !important;
+}
+
+/* Layout */
+.layout {
+  background: #f6f7fa;
+  height: 105vh;
+}
+/* List of bookstore */
+.content {
+  width: 95vw;
+  height: 100vh;
+  margin: auto;
+  background: #fff;
+  border: 2px solid #f6f7fa;
+  border-radius: 15px;
+  box-shadow: 8px 8px 30px rgb(156, 156, 158);
+  display: inline-block;
+}
+
+.title {
+  margin: 1rem 0 0;
+  border-bottom: 1px solid #ecedf0;
+  padding-bottom: 0.8rem;
+  padding-left: 3rem;
+  font-size: 18px;
+  font-weight: 500;
+  color: #00bcd4;
+}
+
+.title span {
+  margin-right: 0.5rem;
+}
+
+.book {
+  display: flex;
+  position: absolute;
+  max-width: auto;
+  flex-wrap: wrap;
+  justify-content: start;
+  align-self: stretch;
+  margin: 1.5rem 4.5rem;
+}
+
+.book .ant-card {
+  margin: 0 1rem 1rem;
+}
+
+/* Pagination */
+.paginate-wrapper {
+  margin-bottom: auto;
+  margin-top: 45.5rem;
+  bottom: 0;
+  /* height: 10%; */
+}
+
+.ant-pagination {
+  text-align: center;
+}
