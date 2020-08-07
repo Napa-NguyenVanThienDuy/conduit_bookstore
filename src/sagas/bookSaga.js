@@ -1,8 +1,13 @@
-import { takeEvery, call, put } from "redux-saga/effects";
-import { BOOK_LIST_LOAD } from "../constants/action";
-import { bookSuccess, bookError } from "../actions/book";
-import { GET_DATA } from "../graphql/query";
-import { fetchBook } from "../service/api";
+import { takeLatest, call, put } from "redux-saga/effects";
+import { BOOK_LIST_LOAD, BOOK_FILTER_LOAD } from "../constants/action";
+import {
+  bookSuccess,
+  bookError,
+  filterError,
+  filterSuccess,
+} from "../actions/book";
+import { GET_DATA, GET_FILTER_BOOK } from "../graphql/query";
+import { fetchBook, fetchFilterBook } from "../service/api";
 
 export function* fetchHome(action) {
   try {
@@ -25,6 +30,30 @@ export function* fetchHome(action) {
   }
 }
 
+export function* fetchFilter(action) {
+  try {
+    const { page, offset, size, filter } = action;
+    const { author, category } = filter;
+    const variables = { offset, size, author, category };
+    const data = yield call(fetchFilterBook, GET_FILTER_BOOK, variables);
+    const title =
+      author || category ? author.name_in || category.name_in : "New Bookstore";
+    const { count } = data.data._allBooksMeta;
+    const { books } = data.data;
+    const filterBook = {
+      books: books,
+      countBook: count,
+      page: page,
+      title: title,
+      filter: filter,
+    };
+    yield put(filterSuccess(filterBook));
+  } catch (error) {
+    yield put(filterError(error.toString()));
+  }
+}
+
 export default function* watchHome() {
-  yield takeEvery(BOOK_LIST_LOAD, fetchHome);
+  yield takeLatest(BOOK_LIST_LOAD, fetchHome);
+  yield takeLatest(BOOK_FILTER_LOAD, fetchFilter);
 }

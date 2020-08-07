@@ -10,7 +10,7 @@ import {
 import { useSelector, useDispatch } from "react-redux";
 
 import Content from "./content";
-import { bookLoad } from "../../actions/book";
+import { bookLoad, filterLoad } from "../../actions/book";
 
 const { SubMenu } = Menu;
 
@@ -22,18 +22,36 @@ function MenuTab() {
     dispatch(bookLoad("id_ASC", 1, 0, 10));
   }, [dispatch]);
 
-  const handlePageChange = useCallback(
-    (page) => {
-      const offset = page === 1 ? 0 : bookstore.page * bookstore.size;
-      dispatch(bookLoad("id_ASC", page, offset, 10));
+  const handleClickMenu = useCallback(
+    (value) => {
+      const data = {
+        author: {},
+        category: {},
+      };
+      if (value.keyPath.length > 0 && value.keyPath[1] === "item_1") {
+        data.category = {
+          name_in: value.key,
+        };
+      }
+      if (value.keyPath.length > 0 && value.keyPath[1] === "item_2") {
+        data.author = {
+          name_in: value.key,
+        };
+      }
+      dispatch(filterLoad(1, 0, 10, data));
     },
     [dispatch]
   );
 
-  const handleClickMenu = (key) => {
-    console.log("menu", key);
+  const filters = bookstore.filter;
+  console.log(filters);
+  const handlePageChange = (page) => {
+    const offset = (page - 1) * 10;
+    filters
+      ? dispatch(filterLoad(1, offset, 10, filters))
+      : dispatch(bookLoad(1, offset, 10));
   };
-
+  // [dispatch]
   return (
     <>
       <Menu mode="horizontal" onClick={handleClickMenu}>
@@ -62,6 +80,7 @@ function MenuTab() {
           // page={bookstore.page}
           countBook={bookstore.countBook}
           handlePageChange={handlePageChange}
+          title={bookstore.title}
         />
       </Layout>
     </>

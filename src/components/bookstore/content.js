@@ -4,7 +4,7 @@ import { Card, Pagination } from "antd";
 
 const { Meta } = Card;
 
-function Content({ books, countBook, handlePageChange }) {
+function Content({ books, countBook, handlePageChange, title }) {
   //const bookstore = useSelector((state) => state.book);
   //console.log("object", bookstore.books);
   //const dispatch = useDispatch();
@@ -13,7 +13,7 @@ function Content({ books, countBook, handlePageChange }) {
     <div className="content">
       <div className="title">
         <StarOutlined />
-        New Bookstore
+        {title}
       </div>
       <div className="book">
         {books.length > 0 &&
@@ -21,7 +21,7 @@ function Content({ books, countBook, handlePageChange }) {
             <Card
               key={data.id}
               hoverable
-              style={{ width: 180 }}
+              style={{ width: 180, height: 350 }}
               cover={
                 <img
                   alt="Book cover"

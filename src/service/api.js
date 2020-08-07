@@ -32,9 +32,10 @@ const fetchBook = async (query, variables = {}) => {
   return data;
 };
 
-const fetchAuthorCategory = async (query) => {
+const fetchFilterBook = async (query, variables = {}) => {
   const { data, status } = await axios.post(bookUrl, {
     query,
+    variables,
   });
   if (status >= 400) {
     throw new Error(data.errors);
@@ -79,5 +80,5 @@ export {
   fetchLogin,
   fetchUser,
   fetchBook,
-  fetchAuthorCategory,
+  fetchFilterBook,
 };

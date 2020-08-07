@@ -116,7 +116,7 @@ body {
 /* List of bookstore */
 .content {
   width: 95vw;
-  height: 100vh;
+  height: 102vh;
   margin: auto;
   background: #fff;
   border: 2px solid #f6f7fa;
@@ -156,7 +156,7 @@ body {
 /* Pagination */
 .paginate-wrapper {
   margin-bottom: auto;
-  margin-top: 45.5rem;
+  margin-top: 47rem;
   bottom: 0;
   /* height: 10%; */
 }
