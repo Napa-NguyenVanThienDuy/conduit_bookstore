@@ -125,6 +125,13 @@ body {
   display: inline-block;
 }
 
+.detail {
+  background: #fff;
+  margin: 2.5rem 2rem;
+  box-shadow: 8px 8px 30px rgb(156, 156, 158);
+  border-radius: 15px;
+}
+
 .title {
   margin: 1rem 0 0;
   border-bottom: 1px solid #ecedf0;
@@ -135,10 +142,23 @@ body {
   color: #00bcd4;
 }
 
+.books {
+  padding: 0rem 3rem;
+  margin: 2rem 5rem;
+}
+
 .title span {
   margin-right: 0.5rem;
 }
 
+.title a {
+  color: #00bcd4;
+}
+
+.title a:hover {
+  font-size: 20px;
+  color: #009fb4;
+}
 .book {
   display: flex;
   position: absolute;
@@ -151,6 +171,44 @@ body {
 
 .book .ant-card {
   margin: 0 1rem 1rem;
+}
+
+.describe {
+  font-size: 18px;
+  color: #00bcd4;
+  border-bottom: 1px solid;
+  margin-top: 2rem;
+}
+
+.ant-row {
+  margin-bottom: 1rem !important;
+}
+
+.ant-row .image {
+  margin: auto;
+  display: block;
+  flex: 0 0 0;
+  width: 280px;
+  height: 300px;
+}
+.ant-col img {
+  width: 230px;
+  height: 280px;
+}
+
+.ant-col-1 {
+  flex: 0 0 2%;
+  font-size: 16px;
+  margin-bottom: 2px;
+}
+
+.ant-col-8 {
+  font-weight: 500;
+  font-size: 16px;
+}
+
+.ant-col-8 span {
+  margin-right: 5px;
 }
 
 /* Pagination */

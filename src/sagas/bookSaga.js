@@ -1,12 +1,18 @@
 import { takeLatest, call, put } from "redux-saga/effects";
-import { BOOK_LIST_LOAD, BOOK_FILTER_LOAD } from "../constants/action";
+import {
+  BOOK_LIST_LOAD,
+  BOOK_FILTER_LOAD,
+  BOOK_DETAIL_LOAD,
+} from "../constants/action";
 import {
   bookSuccess,
   bookError,
   filterError,
   filterSuccess,
+  detailSuccess,
+  detailError,
 } from "../actions/book";
-import { GET_DATA, GET_FILTER_BOOK } from "../graphql/query";
+import { GET_DATA, GET_FILTER_BOOK, GET_BOOK } from "../graphql/query";
 import { fetchBook, fetchFilterBook } from "../service/api";
 
 export function* fetchHome(action) {
@@ -53,7 +59,19 @@ export function* fetchFilter(action) {
   }
 }
 
+export function* fetchBookDetail(action) {
+  try {
+    const id = action.slug;
+    const variables = { id };
+    const data = yield call(fetchBook, GET_BOOK, variables);
+    yield put(detailSuccess(data.data));
+  } catch (error) {
+    yield put(detailError(error.toString()));
+  }
+}
+
 export default function* watchHome() {
   yield takeLatest(BOOK_LIST_LOAD, fetchHome);
   yield takeLatest(BOOK_FILTER_LOAD, fetchFilter);
+  yield takeLatest(BOOK_DETAIL_LOAD, fetchBookDetail);
 }

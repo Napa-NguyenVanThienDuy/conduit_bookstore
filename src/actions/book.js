@@ -8,6 +8,8 @@ import {
   BOOK_FILTER_LOAD,
   BOOK_FILTER_SUCCESS,
   BOOK_FILTER_ERROR,
+  BOOK_DETAIL_LOAD,
+  BOOK_DETAIL_SUCCESS,
 } from "../constants/action";
 
 const action = (type, payload = {}) => {
@@ -35,6 +37,18 @@ export const filterSuccess = (payload) => {
 };
 
 export const filterError = (payload) => {
+  return action(BOOK_FILTER_ERROR, payload);
+};
+
+export const detailLoad = (payload) => {
+  return action(BOOK_DETAIL_LOAD, payload);
+};
+
+export const detailSuccess = (payload) => {
+  return action(BOOK_DETAIL_SUCCESS, payload);
+};
+
+export const detailError = (payload) => {
   return action(BOOK_FILTER_ERROR, payload);
 };
 

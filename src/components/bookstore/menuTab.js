@@ -44,7 +44,6 @@ function MenuTab() {
   );
 
   const filters = bookstore.filter;
-  console.log(filters);
   const handlePageChange = (page) => {
     const offset = (page - 1) * 10;
     filters

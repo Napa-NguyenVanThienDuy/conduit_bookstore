@@ -27,6 +27,28 @@ export const GET_DATA = `
     }
 `;
 
+export const GET_BOOK = `
+    query GetBook($id: ID!) {
+        Book(where: {id: $id}) {
+            id
+            name
+            pageNumber
+            numberInStore
+            publishDate
+            describe
+            category {
+                name
+            }
+            author {
+                name
+            }
+            image {
+                publicUrlTransformed(transformation: {width: "300", height: "300", crop: "limit"})
+            }
+        }
+    }
+`;
+
 export const GET_AUTHOR_CATEGORY = `
 query{
   authors: allAuthors{
